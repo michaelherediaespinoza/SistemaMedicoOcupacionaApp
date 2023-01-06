@@ -1,0 +1,139 @@
+<div class="dashboard-card-content">
+    <div class="card border-info" style="border: solid 1px;">
+        <div class="card-header mat-elevation-z8">
+            <div>
+                <h2 style="margin-top: 1%;float: left;"> Paciente:<input size="50" class="colorLetra" name="nombre"
+                        value={{ceduNombApellPaciente}} type="text">
+                </h2>
+                <ul>
+                    <h2 style="margin-top: 1%;float: right;" class="estiloLetra">
+                        <li>
+                            <u>LISTA CONSULTAS PREOCUPACIONAL INICIAL</u>
+                        </li>
+                    </h2>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <button class="btn btn-danger float-left" (click)="btnCancelar()">
+                VOLVER ATRÁS
+            </button>
+            <div style="text-align: right">
+                <button style="float: right;" type="button" class="btn-sm" mat-button mat-raised-button color="primary"
+                    (click)="addNewConsultaPreocupacionalInicio()">NUEVA CONSULTA PREOCUPACIONAL</button>
+            </div>
+
+            <mat-form-field class="mat-elevation-z3">
+                <mat-label>Buscar</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
+            </mat-form-field>
+
+            <table mat-table [dataSource]="dataSourceconsultaPreocupacional" matSort
+                class="table table-bordered mat-elevation-z8">
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> CODIGO </th>
+                    <td mat-cell *matCellDef="let consultaPreocupacional"> {{consultaPreocupacional.codigo}} </td>
+                </ng-container>
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef> FECHA </th>
+                    <td mat-cell *matCellDef="let consultaPreocupacional"> {{dateFormat(consultaPreocupacional.fecha)}}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="peso">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> PESO </th>
+                    <td mat-cell *matCellDef="let consultaPreocupacional"> {{consultaPreocupacional.peso}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="talla">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> TALLA </th>
+                    <td mat-cell *matCellDef="let consultaPreocupacional"> {{consultaPreocupacional.talla}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="masaCorporal">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> MASA CORPORAL </th>
+                    <td mat-cell *matCellDef="let consultaPreocupacional">
+                        {{consultaPreocupacional.masaCorporal}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="estadoNutricional">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO NUTRICIONAL </th>
+                    <td mat-cell *matCellDef="let consultaPreocupacional"> {{consultaPreocupacional.estadoNutricional}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="enfermedadActual">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ENFERMEDAD ACTUAL </th>
+                    <td mat-cell *matCellDef="let consultaPreocupacional"> {{consultaPreocupacional.enfermedadActual}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tratamiento">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> TRATAMIENTO </th>
+                    <td mat-cell *matCellDef="let consultaPreocupacional"> {{consultaPreocupacional.tratamiento}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones1">
+                    <th mat-header-cell *matHeaderCellDef> CERTIFICADO </th>
+                    <td mat-cell *matCellDef="let consultaPreocupacional">
+                        <a class="pointer" (click)="redirectCertificadoAptitud(consultaPreocupacional)"
+                            style="color: #00a2ff" matTooltip="CERTIFICADO APTITUD">
+                            <button mat-button mat-raised-button>
+                                <i class="bi bi-menu-down" style='color: blue'>Certificado Aptitud</i>
+                            </button>
+                        </a>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones2">
+                    <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
+                    <td mat-cell *matCellDef="let consultaPreocupacional">
+
+                        <a class="pointer" (click)="editarconsultaPreocupacional(consultaPreocupacional)"
+                            style="color: #00a2ff" matTooltip="Agregar Consulta Preocipacional">
+                            <button mat-button mat-raised-button>
+                                <i class="bi bi-view-list" style='color: blue'>Visualizar</i>
+                            </button>
+                        </a>
+                        <a class="pointer" (click)="deleteconsultaPreocupacional(consultaPreocupacional)"
+                            style="color: #00a2ff" matTooltip="Eliminar Preocipacional">
+                            <button mat-button mat-raised-button>
+                                <i class="bi bi-trash3-fill" style='color: blue'>Eliminar</i>
+                            </button>
+                        </a>
+                        <a class="pointer" (click)="redirectImprimirConsulta(consultaPreocupacional)"
+                            style="color: #00a2ff" matTooltip="CERTIFICADO APTITUD">
+                            <button mat-button mat-raised-button>
+                                <i class="bi bi-printer" style='color: blue'>Imprimir Consulta</i>
+                            </button>
+                        </a>
+
+                        <!--
+                        <a class="pointer" style="color: #2f00ff" matTooltip="Ver Consulta Preventiva">
+                            <mat-icon>search</mat-icon>
+                        </a>
+                        <a class="pointer" (click)="editarconsultaPreocupacional(consultaPreocupacional)"
+                            style="color: #00a2ff" matTooltip="Editar Consulta Preventiva">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+                        <a class="pointer" (click)="deleteconsultaPreocupacional(consultaPreocupacional)"
+                            matTooltip="Eliminar Consulta Preventiva" style="color: #ff0000">
+                            <mat-icon>delete</mat-icon>
+                        </a>
+                        -->
+
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsconsultaPreocupacional"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsconsultaPreocupacional;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[10, 20, 35, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </div>
+</div>

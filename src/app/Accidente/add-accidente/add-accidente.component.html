@@ -1,0 +1,267 @@
+<div class="container col-md-50">
+    <div class="card border-info" style="width: 100%;">
+        <div class="card-header text-white bg-info">
+            <h2 style="text-align: center;margin-top: 30px;"> {{titulo}}</h2>
+            <div>
+                <h2> Paciente: <input name="nombre" value={{ceduNombApellPaciente}} type="text" class="form-control">
+                </h2>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <form>
+                <mat-grid-list cols="4" rowHeight="3:1" class="mat-elevation-z3">
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label >Fecha Accidente:</label>
+                            <input [(ngModel)]="formattedDate" name="fechaAccidente" aria-describedby="Ingrese la fecha del accidente" data-identifier="Text box" type="text" class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="">Hora Accidente:</label>
+                            <input [(ngModel)]="accidente.horaAccidente" name="horaAccidente" type="text"
+                                class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="">Fecha Atención:</label>
+                            <input [(ngModel)]="formattedDate" name="fechaAtencion" type="text" class="form-control"
+                                readonly>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="">Hora Atención:</label>
+                            <input [(ngModel)]="accidente.horaAtencion" name="horaAtencion" type="text"
+                                class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </form>
+        </div>
+
+        <div class="card-body">
+            <form>
+                <mat-tab-group mat-align-tabs="center" class="mat-elevation-z3">
+                    <mat-tab label="Detalle Medico">
+                        <mat-grid-list style="margin-top: 2%;" cols="5" rowHeight="3:1">
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <label for="">Region Afectada:</label>
+                                    <input [(ngModel)]="accidente.regionAfectada" name="regionAfectada" type="text"
+                                        class="form-control">
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <label for="">Parte Afectada:</label>
+                                    <input [(ngModel)]="accidente.parteAfectada" name="parteAfectada" type="text"
+                                        class="form-control">
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <label for="">Naturaleza Lesion:</label>
+                                    <input [(ngModel)]="accidente.naturalezaLesion" name="naturalezaLesion" type="text"
+                                        class="form-control">
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <label for="">Dias Incapacidad:</label>
+                                    <input [(ngModel)]="accidente.diasIncapacidad" name="diasIncapacidad" type="number"
+                                        class="form-control">
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <label for="">Escala:</label>
+                                    <input [(ngModel)]="accidente.escala" name="escala" type="text"
+                                        class="form-control">
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <label for="">Supervisor:</label>
+                                    <input [(ngModel)]="accidente.supervisor" name="supervisor" type="text"
+                                        class="form-control">
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <p class="hidden">.</p>
+                                    <mat-form-field>
+                                        <mat-label>Reincidencia </mat-label>
+                                        <mat-select [(value)]="accidente.reincidente">
+                                            <mat-option>NINGUNO</mat-option>
+                                            <mat-option value="SI">SI</mat-option>
+                                            <mat-option value="NO">NO</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <p class="hidden">.</p>
+                                    <mat-form-field>
+                                        <mat-label>Enviado A</mat-label>
+                                        <mat-select [(value)]="accidente.enviadoA">
+                                            <mat-option>NINGUNO</mat-option>
+                                            <mat-option value="DOMICILIO">DOMICILIO</mat-option>
+                                            <mat-option value="HOSPITAL">HOSPITAL</mat-option>
+                                            <mat-option value="IESS">IESS</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <p class="hidden">.</p>
+                                    <mat-form-field>
+                                        <mat-label>Tipo de accidente </mat-label>
+                                        <mat-select [(value)]="accidente.tipoAccidente">
+                                            <mat-option>NINGUNO</mat-option>
+                                            <mat-option value="ACCIDENTE">ACCIDENTE</mat-option>
+                                            <mat-option value="INCIDENTE">INCIDENTE</mat-option>
+
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <p class="hidden">.</p>
+                                    <mat-form-field>
+                                        <mat-label>Grado de accidente</mat-label>
+                                        <mat-select [(value)]="accidente.gradoAccidente">
+                                            <mat-option>Ninguno</mat-option>
+                                            <mat-option value="GRADO 1">GRADO 1</mat-option>
+                                            <mat-option value="GRADO 2">GRADO 2</mat-option>
+                                            <mat-option value="GRADO 3">GRADO 3</mat-option>
+                                            <mat-option value="GRADO 4">GRADO 4</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile [colspan]="5" [rowspan]="1">
+                                <div style='float:left; width:12%' class="form-group">
+                                    <label>Medico Atiende</label>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="txtArea" [(ngModel)]="accidente.medicoAtiende" name="observaciones"
+                                        rows="2" cols="60" placeholder="Observaciones.."></textarea>
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile [colspan]="5" [rowspan]="1">
+                                <div style='float:left; width:12%' class="form-group">
+                                    <label>Observaciones Medicas</label>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="txtArea" [(ngModel)]="accidente.observacionesMedicas"
+                                        name="observaciones" rows="2" cols="60"
+                                        placeholder="Observaciones.."></textarea>
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile [colspan]="5" [rowspan]="1">
+                                <div style='float:left; width:12%' class="form-group">
+                                    <label>Observaciones Accidente</label>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="txtArea" [(ngModel)]="accidente.observacionesAccidente"
+                                        name="observaciones" rows="2" cols="60"
+                                        placeholder="Observaciones.."></textarea>
+                                </div>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </mat-tab>
+
+                    <mat-tab label="Detalle Seguridad Integral">
+                        <mat-grid-list cols="3" rowHeight="3:0.5" style="border: solid 1px;margin-top: 4%;">
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <p class="hidden">.</p>
+                                    <mat-form-field>
+                                        <mat-label>Defecto Maquina Equipo</mat-label>
+                                        <mat-select [(value)]="accidente.defectosMaquinaEquipo">
+                                            <mat-option>NINGUNO</mat-option>
+                                            <mat-option value="SI">SI</mat-option>
+                                            <mat-option value="NO">NO</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <p class="hidden">.</p>
+                                    <mat-form-field>
+                                        <mat-label>Fallos Humanos</mat-label>
+                                        <mat-select [(value)]="accidente.fallosHumanos">
+                                            <mat-option>NINGUNO</mat-option>
+                                            <mat-option value="SI">SI</mat-option>
+                                            <mat-option value="NO">NO</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <div class="form-group">
+                                    <p class="hidden">.</p>
+                                    <mat-form-field>
+                                        <mat-label>Cumplido</mat-label>
+                                        <mat-select [(value)]="accidente.cumplido">
+                                            <mat-option>NINGUNO</mat-option>
+                                            <mat-option value="SI">SI</mat-option>
+                                            <mat-option value="NO">NO</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </mat-grid-tile>
+
+                            <mat-grid-tile [colspan]="3" [rowspan]="2">
+                                <div style='float:left; width:12%' class="form-group">
+                                    <label>Maquina Involucrado en el Accidente</label>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="txtArea" [(ngModel)]="accidente.objetoInvolucrado"
+                                        name="observaciones" rows="2" cols="60"
+                                        placeholder="Observaciones.."></textarea>
+                                </div>
+                            </mat-grid-tile>
+
+                            <mat-grid-tile [colspan]="3" [rowspan]="2">
+                                <div style='float:left; width:12%' class="form-group">
+                                    <label>Descripcion del Accidente</label>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="txtArea" [(ngModel)]="accidente.descripcionAccidente"
+                                        name="observaciones" rows="2" cols="60"
+                                        placeholder="Observaciones.."></textarea>
+                                </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile [colspan]="3" [rowspan]="2">
+                                <div style='float:left; width:12%' class="form-group">
+                                    <label>Acciones Correctivas</label>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="txtArea" [(ngModel)]="accidente.accionesCorrectivas"
+                                        name="observaciones" rows="2" cols="60"
+                                        placeholder="Observaciones.."></textarea>
+                                </div>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </mat-tab>
+                </mat-tab-group>
+            </form>
+        </div>
+
+        <div style="margin-bottom: 1%;" class="card-footer bg-transparent border-success">
+            <div mat-dialog-actions align="center">
+                <button (click)="guardarAccidente()" mat-button mat-raised-button color="warn">GUARDAR
+                    ACCIDENTE</button>
+                <button style="margin-left: 2%;" (click)="cancelarAcciente()" mat-button mat-raised-button color="warn">CANCELAR</button>
+            </div>
+        </div>
+    </div>
+</div>

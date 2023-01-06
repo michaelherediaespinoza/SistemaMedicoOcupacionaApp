@@ -1,0 +1,41 @@
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.pointer{
+    cursor: pointer;
+}
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+}
+th.mat-header-cell {
+    text-align: center;
+    max-width: auto;
+    font-style: italic;
+    background-color:#5882FA;
+    color: white;
+}
+td.mat-cell {
+    text-align: center;
+    max-width: auto;
+}
+
+button {
+    margin-right: 1%;
+}
+
+.txtArea {
+    margin-top: 10%;
+    margin-bottom: 5%;
+    margin-left: 20px;
+  }
+  
+  .estiloLetra {
+    font-weight: bold;
+    font-style: italic;
+    
+}

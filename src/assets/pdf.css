@@ -1,0 +1,8 @@
+.itemCompleted {
+    color: black;
+    text-decoration: line-through;
+}
+
+h4 {
+    color: red;
+}

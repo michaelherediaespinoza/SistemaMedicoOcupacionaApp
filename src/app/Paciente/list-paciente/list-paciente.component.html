@@ -1,0 +1,93 @@
+<div class="dashboard-card-content">
+    <div id="listpacientefocus" #listpacientefocus tabindex="0" id="componentListaPacientes"
+        aria-label="A ingresado a la lista de pacientes" class="card">
+        <div class="card-header">
+            <h2 class="estiloLetra">LISTA DE PACIENTES</h2>
+        </div>
+
+        <div id="divtable" #drop class="card-body">
+
+            <div style="text-align: right">
+                <button style="float: right;" type="button" class="btn btn-primary btn-lg"
+                    (click)="addNewPaciente()">Agregar Nuevo Paciente</button>
+            </div>
+
+            <mat-form-field class="mat-elevation-z3">
+                <mat-label>Buscar paciente</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo: Juan o por cédula" #input
+                    autocomplete="off">
+            </mat-form-field>
+
+            <table tabindex="0" mat-table [dataSource]="dataSource" matSort class="table table-bordered" role="table">
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> CODIGO </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.codigo}} </td>
+                </ng-container>
+                <ng-container matColumnDef="cedula">
+                    <th mat-header-cell *matHeaderCellDef> CÉDULA </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.cedula}} </td>
+                </ng-container>
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef> NOMBRE </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.nombre}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="apellido">
+                    <th mat-header-cell *matHeaderCellDef> APELLIDO </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.apellido}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="edad">
+                    <th mat-header-cell *matHeaderCellDef> EDAD </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.edad}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sexo">
+                    <th mat-header-cell *matHeaderCellDef> SEXO </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.sexo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tipoSangre">
+                    <th mat-header-cell *matHeaderCellDef> TIPO SANGRE </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.tipoSangre}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="telefono">
+                    <th mat-header-cell *matHeaderCellDef> TELÉFONO </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.telefono}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> ACCIONES </th>
+                    <td mat-cell *matCellDef="let paciente">
+                        <!--  <a class="pointer" (click)="Editar(paciente)">
+                                <button mat-raised-button focusable="false">
+                                    <i class="bi bi-search" style='color: blue'>Ver</i>
+                                </button>
+                                    </a>
+                            -->
+                        <a class="pointer" (click)="Editar(paciente)">
+                            <button mat-raised-button focusable="true" aria-pressed="false">
+                                <i class="bi bi-pencil-square" style='color: blue'>Editar</i>
+                            </button>
+                        </a>
+                        <a class="pointer" (click)="Delete(paciente)">
+                            <button mat-raised-button focusable="true" aria-pressed="false">
+                                <i class="bi bi-trash3-fill" style='color: blue'>Eliminar</i>
+                            </button>
+                        </a>
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[10, 20, 35, 100]" aria-label="Select paginas para pacientes">
+            </mat-paginator>
+
+        </div>
+    </div>
+</div>

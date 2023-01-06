@@ -1,0 +1,30 @@
+.pointer{
+    cursor: pointer;
+}
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+table {
+    width: 100%;
+    text-align: center;
+}
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+}
+
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }

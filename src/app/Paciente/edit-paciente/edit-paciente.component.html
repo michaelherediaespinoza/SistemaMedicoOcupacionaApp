@@ -1,0 +1,235 @@
+<div class="container col-md-50">
+    <div class="card border-info" style="width: 100%;">
+        <div class="card-header text-white bg-dark" role="banner">
+            <h2 style="text-align: center;margin-top: 20px;">ACTUALIZAR PACIENTE</h2>
+        </div>
+        <div id="editpaciente" #editpaciente tabindex="-1" class="card-body" border-danger role="form"
+            aria-label="Información del paciente para actualización">
+            <form>
+                <mat-grid-list cols="5" rowHeight="3:1.3" class="mat-elevation-z4">
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="cedulap">Cédula:</label>
+                            <input [(ngModel)]="paciente.cedula" id="cedulap" name="cedula" type="text"
+                                class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="cargop">Cargo: </label>
+                            <input [(ngModel)]="cargo.nombre" id="cargop" name="cargocodigo" type="text" required
+                                placeholder="CLICK Buscar Cargo" readonly
+                                class="btn btn-outline-secondary mr-2; form-control" ngbTooltip="CLICK buscar Cargo"
+                                (click)="openDialogCargo()" (keyup.enter)="openDialogCargo()">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="nombrep">Nombre:</label>
+                            <input [(ngModel)]="paciente.nombre" id="nombrep" name="nombre" type="text"
+                                class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="apellidop">Apellido:</label>
+                            <input [(ngModel)]="paciente.apellido" id="apellidop" name="apellido" type="text"
+                                class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="domiciliop">Domicilio:</label>
+                            <input [(ngModel)]="paciente.domicilio" id="domiciliop" name="domicilio" type="text"
+                                matInput class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="telefonop">Teléfono :</label>
+                            <input [(ngModel)]="paciente.telefono" id="telefonop" name="telefono" type="text" matInput
+                                class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="fechaNacimientop">Fecha de Nacimiento:</label>
+                            <input [(ngModel)]="paciente.fechaNacimiento" id="fechaNacimientop" name="fechaNacimiento"
+                                type="text" class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="edadp">Edad:</label>
+                            <input [(ngModel)]="paciente.edad" id="edadp" name="edad" type="number" matInput
+                                class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="fechaIngresoEmpresap">Fecha de Ingreso:</label>
+                            <input [(ngModel)]="paciente.fechaIngresoEmpresa" id="fechaIngresoEmpresap"
+                                name="fechaIngresoEmpresa" type="text" class="form-control" readonly>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <mat-form-field appearance="outline" floatLabel="always">
+                                <mat-label>Sexo</mat-label>
+                                <mat-select [(value)]="paciente.sexo">
+                                    <mat-option>NINGUNO</mat-option>
+                                    <mat-option value="MASCULINO">MASCULINO</mat-option>
+                                    <mat-option value="FEMENINO">FEMENINO</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <mat-form-field appearance="outline" floatLabel="always">
+                                <mat-label aria-label="Seleccione tipo de sangre">Tipo de Sangre</mat-label>
+                                <mat-select [(value)]="paciente.tipoSangre">
+                                    <mat-option>NINGUNO</mat-option>
+                                    <mat-option value="A+">A+</mat-option>
+                                    <mat-option value="A-">A-</mat-option>
+                                    <mat-option value="O+">O+</mat-option>
+                                    <mat-option value="O-">O-</mat-option>
+                                    <mat-option value="B+">B+</mat-option>
+                                    <mat-option value="B-">B-</mat-option>
+                                    <mat-option value="AB+">AB+</mat-option>
+                                    <mat-option value="AB-">AB-</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <mat-form-field appearance="outline" floatLabel="always">
+                                <mat-label for="view">Estado Civil</mat-label>
+                                <mat-select id="view" [(value)]="paciente.estadoCivil">
+                                    <mat-option>NINGUNO</mat-option>
+                                    <mat-option value="SOLTERO">SOLTERO</mat-option>
+                                    <mat-option value="CASADO">CASADO</mat-option>
+                                    <mat-option value="VIUD(A)">CASADO</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <mat-form-field appearance="outline" floatLabel="always">
+                                <mat-label>Instrucción</mat-label>
+                                <mat-select [(value)]="paciente.instruccion">
+                                    <mat-option>NINGUNO</mat-option>
+                                    <mat-option value="PRIMARIA">PRIMARIA</mat-option>
+                                    <mat-option value="SECUNDARIA">SECUNDARIA</mat-option>
+                                    <mat-option value="EDUCACION SUPERIOR">EDUCACION SUPERIOR</mat-option>
+                                    <mat-option value="POSTGRADO">POSTGRADO</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="ciudadp">Ciudad:</label>
+                            <input [(ngModel)]="paciente.ciudad" id="ciudadp" name="ciudad" type="text"
+                                class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="provinciap">Provincia:</label>
+                            <input [(ngModel)]="paciente.provincia" id="provinciap" name="provincia" type="text"
+                                class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="nombrecontactop">Nombre de Contacto:</label>
+                            <input [(ngModel)]="paciente.nombreContacto" id="nombrecontactop" name="nombreContacto"
+                                type="text" class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="telefonocontactop">Teléfono de Contacto:</label>
+                            <input [(ngModel)]="paciente.telefonoContacto" id="telefonocontactop"
+                                name="telefonoContacto" type="text" class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="parentescop">Parentesco:</label>
+                            <input [(ngModel)]="paciente.parentesco" id="parentescop" name="parentesco" type="text"
+                                class="form-control">
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+
+
+                <ng-template #myModalCargo let-c="close" let-d="dismiss">
+
+                    <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+                        <mat-icon class="close-icon" mat-button mat-raised-button color="primary">close</mat-icon>
+                    </button>
+
+                    <h1 class="info-dialog-cargo" mat-dialog-title>¡CARGOS!</h1>
+
+                    <div mat-dialog-content>
+
+                        <table mat-table style="width: 100%; border: solid 3px;" [dataSource]="dataSourceCargo" matSort
+                            class="mat-elevation-z8 demo-table">
+
+                            <ng-container matColumnDef="codigo">
+                                <th mat-header-cell *matHeaderCellDef> CODIGO </th>
+                                <td mat-cell *matCellDef="let cargo"> {{cargo.codigo}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="nombre">
+                                <th mat-header-cell *matHeaderCellDef> NOMBRE </th>
+                                <td mat-cell *matCellDef="let cargo"> {{cargo.nombre}} </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsCargo"></tr>
+                            <tr mat-row (click)="selectCargoDialog(row)"
+                                [class.demo-row-is-clicked]="cargoSelect.has(row)" mat-row
+                                *matRowDef="let row; columns: displayedColumnsCargo;">
+                            </tr>
+                        </table>
+
+                        <div class="info-dialog-cargo" *ngIf="!cargoSelect.size">
+                            <h2>
+                                NO tiene ningun Cargo seleccionado..!
+                            </h2>
+                        </div>
+
+                        <ul style="margin-top: 3%;">
+                            <li *ngFor="let cargo of cargoSelect" class="text-center">
+                                <h3> Cargo seleccionado </h3>
+                                <h2> Cargo Seleccionado: {{cargo.nombre}} </h2>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div mat-dialog-actions align="end">
+                        <button mat-button mat-raised-button color="primary" mat-dialog-close>OK</button>
+                    </div>
+                </ng-template>
+            </form>
+        </div>
+
+        <div style="margin-bottom: 1%;" class="card-footer bg-transparent border-success" role="contentinfo">
+            <div mat-dialog-actions align="center">
+                <button aria-label="Retorno a la lista de pacientes SIN GUARDAR INFORMACIÓN" style="margin-right: 3%;"
+                    (click)="volverAtras()" mat-button mat-raised-button color="primary"
+                    aria-pressed="false">Volver</button>
+                <button aria-label="Actualizar Datos y Retorno a la lista de pacientes"
+                    (click)="actualizarPaciente(paciente)" mat-button mat-raised-button color="primary"
+                    aria-pressed="false">Actualizar
+                    Paciente</button>
+            </div>
+        </div>
+
+    </div>
+</div>

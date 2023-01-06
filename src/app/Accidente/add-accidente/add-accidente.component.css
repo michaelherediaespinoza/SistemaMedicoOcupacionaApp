@@ -1,0 +1,66 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+
+label, h1 {
+  font-weight: bold;
+}
+
+.text-inside-grid {
+  position: absolute;
+  left: 5px;
+}
+
+
+.my-module {
+position: fixed;
+top: 0;
+left: 0;
+}
+
+
+.demo-table {
+width: 100%;
+}
+
+.mat-row .mat-cell {
+border-bottom: 1px solid transparent;
+border-top: 1px solid transparent;
+cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+font-weight: bold;
+}
+
+
+.info-dialog-diagnostico-sindrome {
+  text-align: center;
+  margin-top: 3%;
+}
+
+
+.hidden{
+  visibility:hidden;
+}
+
+.txtArea {
+  margin-top: 10%;
+  margin-bottom: 5%;
+  margin-left: 20px;
+}

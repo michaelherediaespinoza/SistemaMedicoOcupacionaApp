@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.dashboard-card-content {
+    text-align: center;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+
+  .tooltip.top .tiptext{
+    margin-left: -60px;
+    bottom: 150%;
+    left: 50%;
+  }
+  .tooltip.top .tiptext::after{
+    margin-left: -5px;
+    top: 100%;
+    left: 50%;
+    border-color: #2E2E2E transparent transparent transparent;
+  }
+
+  @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+
+
+
+
+
+
+
+
+
+  .mat-tab-group {
+    margin-bottom: 48px;
+  }
+  
+  .mat-tab-label {
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: 0.6;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: normal;
+    position: relative;
+    border-bottom: 1px solid #cbcbcb;
+    border-right: 1px solid #cbcbcb;
+  }
+  
+  .mat-tab-label:last-child {
+    border-right: 0px;
+  }
+  .mat-tab-label .mat-tab-label-content {
+    white-space: normal !important;
+  }
+  .mat-tab-group .mat-tab-header {
+    background-color: #f0f0f0;
+    border-bottom: 0px solid #cbcbcb;
+  }
+  .mat-tab-group .mat-tab-label {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 0.3px;
+    color: #111111;
+    opacity: 1;
+  
+    height: 57px !important;
+    max-height: 80px !important;
+    padding: 16px 14px !important;
+    width: 127px !important;
+    min-width: 127px !important;
+    max-width: 166px !important;
+  }
+  
+  .mat-tab-label-active {
+    background-color: #ffffff;
+    border-top: 2px solid #ca261a;
+    border-bottom: 0px;
+  }
+  .mat-tab-label-content {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .mat-tab-body-content {
+    height: auto !important;
+    overflow: hidden !important;
+    padding: 15px 0px;
+    font-family: Roboto;
+      
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: 0.3px;
+    color: #111111;
+    opacity: 1;
+  }
+  
+  .mat-ink-bar {
+    visibility: hidden !important;
+  }
+
+  span:focus {
+    outline: none;
+  }
+  main {
+    flex: 1;
+  }
+
+  

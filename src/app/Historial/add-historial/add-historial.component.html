@@ -1,0 +1,164 @@
+<div class="container col-md-50">
+    <div class="card border-info" style="border: solid 1px;">
+        <div class="card-header text-white bg-dark" role="banner" aria-label="Información del paciente"
+            style="border: solid 1px;">
+            <h1 style="text-align: center;"> HISTORIAL DEL PACIENTE</h1>
+            <div>
+                <h2>
+                    <label for="pacientecm">Paciente:</label>
+                    <input name="nombre" id="pacientecm" value={{ceduNombApellPaciente}} type="text"
+                        class="form-control" readonly>
+                </h2>
+            </div>
+        </div>
+
+        <mat-grid-list cols="4" rowHeight="3.5:1.2" class="mat-elevation-z4">
+
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="fuma">Fuma:</label>
+                    <input [(ngModel)]="historial.fuma" id="fuma" name="fuma" type="text" class="form-control">
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="bebe">Bebe:</label>
+                    <input [(ngModel)]="historial.bebe" id="bebe" name="bebe" type="text" class="form-control">
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="drogas">Drogas:</label>
+                    <input [(ngModel)]="historial.drogas" id="drogas" name="drogas" type="text" class="form-control">
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="observacion">Observación:</label>
+                    <input [(ngModel)]="historial.observacion" id="observacion" name="observacion" type="text"
+                        class="form-control">
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <div style='float:left; width:20%' class="form-group">
+                    <label for="antecedenteOcupacional">Antecedente Ocupacional</label>
+                </div>
+                <div class="form-group">
+                    <textarea class="txtArea" [(ngModel)]="historial.antecedenteOcupacional"
+                        id="antecedenteOcupacional" name="antecedenteOcupacional" rows="2" cols="40"></textarea>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <div style='float:left; width:20%' class="form-group">
+                    <label for="alergia">alergias</label>
+                </div>
+                <div class="form-group">
+                    <textarea class="txtArea" [(ngModel)]="historial.alergia" id="alergia" name="alergia" rows="2"
+                        cols="40"></textarea>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <div style='float:left; width:20%' class="form-group">
+                    <label for="enfermedadCronica">Enfermedad Cronica</label>
+                </div>
+                <div class="form-group">
+                    <textarea class="txtArea" [(ngModel)]="historial.enfermedadCronica" id="enfermedadCronica"
+                        name="enfermedadCronica" rows="2" cols="40"></textarea>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <div style='float:left; width:20%' class="form-group">
+                    <label for="antecedenteFamiliar">Antecedente Familiar</label>
+                </div>
+                <div class="form-group">
+                    <textarea class="txtArea" [(ngModel)]="historial.antecedenteFamiliar" id="antecedenteFamiliar"
+                        name="antecedenteFamiliar" rows="2" cols="40"></textarea>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <div style='float:left; width:20%' class="form-group">
+                    <label for="hospitalizacion">Hospitalización</label>
+                </div>
+                <div class="form-group">
+                    <textarea class="txtArea" [(ngModel)]="historial.hospitalizacion" id="hospitalizacion"
+                        name="antecedenteFamiliar" rows="2" cols="40"></textarea>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <div style='float:left; width:20%' class="form-group">
+                    <label for="intervencion">intervencion</label>
+                </div>
+                <div class="form-group">
+                    <textarea class="txtArea" [(ngModel)]="historial.intervencion" id="intervencion"
+                        name="intervencion" rows="2" cols="40"></textarea>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="menarquia">Menarquia:</label>
+                    <input [(ngModel)]="historial.menarquia" id="menarquia" name="menarquia" type="number"
+                        class="form-control">
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="gesta">Gesta:</label>
+                    <input [(ngModel)]="historial.gesta" id="gesta" name="gesta" type="number" class="form-control">
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="para">Para:</label>
+                    <input [(ngModel)]="historial.para" id="para" name="para" type="number" class="form-control">
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="hv">HV:</label>
+                    <input [(ngModel)]="historial.hv" id="hv" name="hv" type="number" class="form-control">
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="ab">AB:</label>
+                    <input [(ngModel)]="historial.ab" id="ab" name="ab" type="number" class="form-control">
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="hm">HM:</label>
+                    <input [(ngModel)]="historial.hm" id="hm" name="hm" type="number" class="form-control">
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="form-group">
+                    <label for="fum">fum:</label>
+                    <input [(ngModel)]="historial.fum" id="fum" name="fum" type="text" class="form-control">
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+                <div style='float:left; width:20%' class="form-group">
+                    <label for="pap">PAP</label>
+                </div>
+                <div class="form-group">
+                    <textarea class="txtArea" [(ngModel)]="historial.pap" id="pap" name="pap" rows="2"
+                        cols="40"></textarea>
+                </div>
+            </mat-grid-tile>
+
+
+        </mat-grid-list>
+
+        <div class="card-footer bg-transparent border-success" role="contentinfo" aria-label="Footer"
+            style="margin-bottom: 1%;">
+            <div mat-dialog-actions align="center">
+                <button (click)="guardarHistorialPaciente()" mat-button mat-raised-button color="primary">GUARDAR
+                    HISTORIAL</button>
+            </div>
+        </div>
+
+    </div>
+</div>

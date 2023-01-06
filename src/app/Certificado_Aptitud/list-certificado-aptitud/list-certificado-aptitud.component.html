@@ -1,0 +1,112 @@
+<div class="dashboard-card-content">
+    <div class="card border-info" style="border: solid 1px;">
+        <div class="card-header mat-elevation-z8">
+            <div>
+                <h2 style="margin-top: 1%;float: left;"> Paciente:<input size="50" class="colorLetra" name="nombre"
+                        value={{ceduNombApellPaciente}} type="text">
+                </h2>
+                <ul>
+                    <h2 style="margin-top: 1%;float: right;" class="estiloLetra">
+                        <li>
+                            <u>LISTA CERTIFICADO DE APTITUD</u>
+                        </li>
+                    </h2>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <div style="text-align: right">
+                <button style="float: right;" type="button" class="btn btn-primary btn-sm"
+                    (click)="addNewcertificadoAptitudInicio()">NUEVO CERTIFICADO DE APTITUD</button>
+            </div>
+
+            <mat-form-field class="mat-elevation-z3">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
+            </mat-form-field>
+
+            <table mat-table [dataSource]="dataSourcecertificadoAptitud" matSort
+                class="table table-bordered mat-elevation-z8">
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> CODIGO </th>
+                    <td mat-cell *matCellDef="let certificadoAptitud"> {{certificadoAptitud.codigo}} </td>
+                </ng-container>
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef> FECHA </th>
+                    <td mat-cell *matCellDef="let certificadoAptitud"> {{certificadoAptitud.fecha}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tipoEvaluacion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> EVALUACIÓN </th>
+                    <td mat-cell *matCellDef="let certificadoAptitud"> {{certificadoAptitud.tipoEvaluacion}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="apto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> APTO </th>
+                    <td mat-cell *matCellDef="let certificadoAptitud"> {{certificadoAptitud.apto}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="aptoObservacion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> APTO EN OBSER. </th>
+                    <td mat-cell *matCellDef="let certificadoAptitud"> {{certificadoAptitud.aptoObservacion}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="aptoLimitacion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> APTO CON LIM. </th>
+                    <td mat-cell *matCellDef="let certificadoAptitud"> {{certificadoAptitud.aptoLimitacion}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="NoApto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> NO APTO </th>
+                    <td mat-cell *matCellDef="let certificadoAptitud"> {{certificadoAptitud.NoApto}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="condicionSalud">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> CONDICIÓN SALUD </th>
+                    <td mat-cell *matCellDef="let certificadoAptitud">
+                        {{certificadoAptitud.condicionSalud}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="recomendacion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> RECOMENDACIONES</th>
+                    <td mat-cell *matCellDef="let certificadoAptitud"> {{certificadoAptitud.recomendacion}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
+                    <td mat-cell *matCellDef="let certificadoAptitud">
+
+                        <a class="pointer" (click)="editarCertificadoAptitud(certificadoAptitud)" style="color: #00a2ff"
+                            matTooltip="Agregar Consulta Preventiva">
+                            <button mat-button mat-raised-button>
+                                <i class="bi bi-view-list" style='color: blue'>Visualizar</i>
+                            </button>
+                        </a>
+                        <a class="pointer" style="color: #00a2ff" matTooltip="IMPRIMIR">
+                            <button mat-button mat-raised-button>
+                                <i class="bi bi-printer-fill" style='color: blue'>Imprimir</i>
+                            </button>
+                        </a>
+                        <a class="pointer" (click)="deleteCertificadoAptitud(certificadoAptitud)" style="color: #00a2ff"
+                            matTooltip="Agregar Consulta Preventiva">
+                            <button mat-button mat-raised-button>
+                                <i class="bi bi-trash3-fill" style='color: blue'>Eliminar</i>
+                            </button>
+                        </a>
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnscertificadoAptitud"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnscertificadoAptitud;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[10, 20, 35, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="dashboard-card-content">
+    <div class="card border-info" style="border: solid 1px;">
+        <div class="card-header text-white bg-info">
+            <h2 style="text-align: center;margin-top: 30px;"> LISTAR CONSULTA PREVENTIVA</h2>
+            <div>
+                <h2> Paciente: <input name="nombre" value={{ceduNombApellPaciente}} type="text" class="form-control">
+                </h2>
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <mat-form-field class="mat-elevation-z3">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
+            </mat-form-field>
+
+            <table mat-table [dataSource]="dataSourceExamenMedicoInicial" matSort  class="table table-bordered mat-elevation-z8">
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> CODIGO </th>
+                    <td mat-cell *matCellDef="let examenMedicoInicial"> {{examenMedicoInicial.codigo}} </td>
+                </ng-container>
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef> FECHA </th>
+                    <td mat-cell *matCellDef="let examenMedicoInicial"> {{examenMedicoInicial.fecha}} </td>
+                </ng-container>
+                <ng-container matColumnDef="peso">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> PESO </th>
+                    <td mat-cell *matCellDef="let examenMedicoInicial"> {{examenMedicoInicial.peso}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="talla">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> TALLA </th>
+                    <td mat-cell *matCellDef="let examenMedicoInicial"> {{examenMedicoInicial.talla}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="respiracion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> RESPIRACION </th>
+                    <td mat-cell *matCellDef="let examenMedicoInicial"> {{examenMedicoInicial.respiracion}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="temperatura">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> TEMPERATURA </th>
+                    <td mat-cell *matCellDef="let examenMedicoInicial"> {{examenMedicoInicial.temperatura}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="anamnesis">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ANAMNESIS </th>
+                    <td mat-cell *matCellDef="let examenMedicoInicial"> {{examenMedicoInicial.anamnesis}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="estadoNutricional">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> SINDROME </th>
+                    <td mat-cell *matCellDef="let examenMedicoInicial">
+                        {{examenMedicoInicial.diagnostico.sindrome.nombre}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sindrome">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO NUTRICIONAL </th>
+                    <td mat-cell *matCellDef="let examenMedicoInicial"> {{examenMedicoInicial.estadoNutricional}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
+                    <td mat-cell *matCellDef="let examenMedicoInicial">
+                        <a class="pointer" style="color: #2f00ff" matTooltip="Ver Consulta Preventiva">
+                            <mat-icon>search</mat-icon>
+                        </a>
+                        <a class="pointer" (click)="editarExamenMedicoInicial(examenMedicoInicial)" style="color: #00a2ff"
+                            matTooltip="Editar Consulta Preventiva">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+                        <a class="pointer" (click)="deleteExamenMedicoInicial(examenMedicoInicial)"
+                            matTooltip="Eliminar Consulta Preventiva" style="color: #ff0000">
+                            <mat-icon>delete</mat-icon>
+                        </a>
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsExamenMedicoInicial"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsExamenMedicoInicial;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[10, 20, 35, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </div>
+</div>

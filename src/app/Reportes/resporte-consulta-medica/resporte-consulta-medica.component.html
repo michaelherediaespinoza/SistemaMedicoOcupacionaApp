@@ -1,0 +1,388 @@
+<div class="dashboard-card-content">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="estiloLetra">REPORTES DE CONSULTAS POR FECHAS</h1>
+        </div>
+
+        <form>
+            <mat-grid-list cols="3" rowHeight="3:0.5" class="mat-elevation-z4">
+                <h2>REPORTE DE CONSULTA MÉDICA GENERAL</h2>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaInicioConsultaMedica">Fecha Inicio:</label>
+                        <input [(ngModel)]="fechaInicioConsultaMedica" id="fechaInicioConsultaMedica" name="fechaInicioConsultaMedica" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaFinConsultaMedica">Fecha Fin:</label>
+                        <input [(ngModel)]="fechaFinConsultaMedica" id="fechaFinConsultaMedica" name="fechaFinConsultaMedica" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <div class="container" id="div1">
+                            <button id="create" type="button" class="btn btn-primary btn-sm"
+                                (click)="reporteConsultaMedicaGeneralPorFecha()">CONSULTA MÉDICA GENERAL</button>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+
+            <div id="pdfTableConsultaMedicaGeneral" #pdfTableConsultaMedicaGeneral>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>PESO</th>
+                            <th>TALLA</th>
+                            <th>MASA CORPORAL</th>
+                            <th>ESTADO NUTRICIONAL</th>
+                            <th>MOTIVO CONSULTA</th>
+                            <th>PROBELMA ACTUAL</th>
+                            <th>DIAGNOSTICO</th>
+                            <th>TRATAMIENTO</th>
+                            <th>PACIENTE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let consultaMedica of consultaMedicas">
+                            <th>{{consultaMedica.peso}}</th>
+                            <td>{{consultaMedica.talla}}</td>
+                            <td>{{consultaMedica.masaCorporal}}</td>
+                            <td>{{consultaMedica.estadoNutricional}}</td>
+                            <td>{{consultaMedica.motivoConsulta}}</td>
+                            <td>{{consultaMedica.enfermedadActual}}</td>
+                            <td>{{consultaMedica.diagnosticoCie}}</td>
+                            <td>{{consultaMedica.tratamiento}}</td>
+                            <td>{{consultaMedica.paciente.nombre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container" id="div1">
+                    <button id="create" type="button" class="btn btn-primary btn-sm"
+                        (click)="downloadPDFConsultaMedicaGeneral()">GENERAR
+                        PDF</button>
+                </div>
+            </div>
+
+
+            <hr />
+
+
+            <mat-grid-list cols="3" rowHeight="3:0.5" class="mat-elevation-z4">
+                <h2>REPORTE DE CONSULTA PREOCUPACIONAL / INICIO</h2>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaInicioConsultaInicio">Fecha Inicio:</label>
+                        <input [(ngModel)]="fechaInicioConsultaInicio" id="fechaInicioConsultaInicio" name="fechaInicioConsultaInicio" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaFinConsultaInicio">Fecha Fin:</label>
+                        <input [(ngModel)]="fechaFinConsultaInicio" id="fechaFinConsultaInicio" name="fechaFinConsultaInicio" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <div class="container" id="div1">
+                            <button id="create" type="button" class="btn btn-primary btn-sm"
+                                (click)="reporteConsultaPreocupacionalPorFecha()">CONSULTA PREOCUPACIONAL</button>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+
+            <div id="pdfTableConsultaInicio" #pdfTableConsultaInicio>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>MOTIVO CONSULTA</th>
+                            <th>ACTIVIDAD EXTRALABORAL</th>
+                            <th>ENFERMEDAD ACTUAL</th>
+                            <th>DIAGNÓSTICO</th>
+                            <th>TRATAMIENTO</th>
+                            <th>PESO</th>
+                            <th>TALLA</th>
+                            <th>MASA CORPORAL</th>
+                            <th>ESTADO NUTRICIONAL</th>
+                            <th>PACIENTE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let consultaPreocupacional of consultaPreocupacionales">
+                            <th>{{consultaPreocupacional.motivoConsulta}}</th>
+                            <td>{{consultaPreocupacional.actividadExtraLaboral}}</td>
+                            <td>{{consultaPreocupacional.enfermedadActual}}</td>
+                            <td>{{consultaPreocupacional.diagnosticoCie}}</td>
+                            <td>{{consultaPreocupacional.tratamiento}}</td>
+                            <td>{{consultaPreocupacional.peso}}</td>
+                            <td>{{consultaPreocupacional.talla}}</td>
+                            <td>{{consultaPreocupacional.masaCorporal}}</td>
+                            <td>{{consultaPreocupacional.estadoNutricional}}</td>
+                            <td>{{consultaPreocupacional.paciente.nombre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container" id="div1">
+                    <button id="create" type="button" class="btn btn-primary btn-sm" (click)="downloadPDFconsultaInicio()">GENERAR
+                        PDF</button>
+                </div>
+            </div>
+
+            <hr />
+
+            <mat-grid-list cols="3" rowHeight="3:0.5" class="mat-elevation-z4">
+                <h2>REPORTE DE CONSULTA PERIÓDICA</h2>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaInicioConsultaPeriodica">Fecha Inicio:</label>
+                        <input [(ngModel)]="fechaInicioConsultaPeriodica" id="fechaInicioConsultaPeriodica" name="fechaInicioConsultaPeriodica" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaFinConsultaPeriodica">Fecha Fin:</label>
+                        <input [(ngModel)]="fechaFinConsultaPeriodica" id="fechaFinConsultaPeriodica" name="fechaFinConsultaPeriodica" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <div class="container" id="div1">
+                            <button id="create" type="button" class="btn btn-primary btn-sm"
+                                (click)="reporteConsultaPeriodicaPorFecha()">CONSULTA PERIÓDICA </button>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+
+            <div id="pdfTableConsultaPeriodica" #pdfTableConsultaPeriodica>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>MOTIVO CONSULTA</th>
+                            <th>ENFERMEDAD ACTUAL</th>
+                            <th>DIAGNÓSTICO</th>
+                            <th>TRATAMIENTO</th>
+                            <th>INCIDENTES</th>
+                            <th>APTITUD MÉDICA</th>
+                            <th>MASA CORPORAL</th>
+                            <th>ESTADO NUTRICIONAL</th>
+                            <th>PACIENTE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let consultaPreventiva of consultaPreventivas">
+                            <th>{{consultaPreventiva.motivoConsulta}}</th>
+                            <td>{{consultaPreventiva.enfermedadActual}}</td>
+                            <td>{{consultaPreventiva.diagnosticoCie}}</td>
+                            <td>{{consultaPreventiva.tratamiento}</td>
+                            <td>{{consultaPreventiva.incidentes}}</td>
+                            <td>{{consultaPreventiva.observacionAptitudPeriodica}}</td>
+                            <td>{{consultaPreventiva.masaCorporal}}</td>
+                            <td>{{consultaPreventiva.estadoNutricional}</td>
+                            <td>{{consultaPreventiva.paciente.nombre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container" id="div1">
+                    <button id="create" type="button" class="btn btn-primary btn-sm" (click)="downloadPDFconsultaPeriodica()">GENERAR
+                        PDF</button>
+                </div>
+            </div>
+
+            <hr />
+
+            <mat-grid-list cols="3" rowHeight="3:0.5" class="mat-elevation-z4">
+                <h2>REPORTE DE CONSULTA RETIRO</h2>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaInicioConsultaSalida">Fecha Inicio:</label>
+                        <input [(ngModel)]="fechaInicioConsultaSalida" id="fechaInicioConsultaSalida" name="fechaInicioConsultaSalida" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaFinConsultaSalida">Fecha Fin:</label>
+                        <input [(ngModel)]="fechaFinConsultaSalida" id="fechaFinConsultaSalida" name="fechaFinConsultaSalida" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <div class="container" id="div1">
+                            <button id="create" type="button" class="btn btn-primary btn-sm"
+                                (click)="reporteConsultaRetiroPorFecha()">CONSULTA RETIRO</button>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+
+            <div id="pdfTableConsultaRetiro" #pdfTableConsultaRetiro>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>INICIO LABORES</th>
+                            <th>FECHA SALIDA</th>
+                            <th>TIEMPO</th>
+                            <th>DIAGNÓSTICO</th>
+                            <th>EVALUACIÓN</th>
+                            <th>OBSERVACIÓN</th>
+                            <th>TRATAMIENTO</th>
+                            <th>MASA CORPORAL</th>
+                            <th>ESTADO NUTRICIONAL</th>
+                            <th>PACIENTE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let examenMedicoRetiro of examenMedicoRetiros">
+                            <th>{{examenMedicoRetiro.fechaIngresoLabores}}</th>
+                            <td>{{examenMedicoRetiro.fechaSalida}}</td>
+                            <td>{{examenMedicoRetiro.tiempoRetiroMeses}}</td>
+                            <td>{{examenMedicoRetiro.diagnosticoCie}}</td>
+                            <td>{{examenMedicoRetiro.evaluacionMedicaRetiro</td>
+                            <td>{{examenMedicoRetiro.observacionesRetiro}}</td>
+                            <td>{{examenMedicoRetiro.tratamiento}}</td>
+                            <td>{{examenMedicoRetiro.masaCorporal}}</td>
+                            <td>{{examenMedicoRetiro.estadoNutricional}</td>
+                            <td>{{examenMedicoRetiro.paciente.nombre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container" id="div1">
+                    <button id="create" type="button" class="btn btn-primary btn-sm" (click)="downloadPDFconsultaRetiro()">GENERAR
+                        PDF</button>
+                </div>
+            </div>
+
+            <hr />
+
+            <mat-grid-list cols="3" rowHeight="3:0.5" class="mat-elevation-z4">
+                <h2>REPORTE DE CONSULTA REINTEGRO</h2>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaInicioConsultaReingetro">Fecha Inicio:</label>
+                        <input [(ngModel)]="fechaInicioConsultaReingetro" id="fechaInicioConsultaReingetro" name="fechaInicioConsultaReingetro" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaFinConsultaReingetro">Fecha Fin:</label>
+                        <input [(ngModel)]="fechaFinConsultaReingetro" id="fechaFinConsultaReingetro" name="fechaFinConsultaReingetro" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <div class="container" id="div1">
+                            <button id="create" type="button" class="btn btn-primary btn-sm"
+                                (click)="reporteConsultaReintegroPorFecha()">CONSULTA REINTEGRO</button>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+
+            <div id="pdfTableConsultaReintegro" #pdfTableConsultaReintegro>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>FECHA SALIDA</th>
+                            <th>FECHA REINGRESO</th>
+                            <th>CAUSA SALIDA</th>
+                            <th>MOTIVO CONSULTA</th>
+                            <th>ENFERMEDAD ACTUAL</th>
+                            <th>DIAGNÓSTICO</th>
+                            <th>TRATAMIENTO</th>
+                            <th>PACIENTE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let consultaReintegro of consultaReintegros">
+                            <th>{{consultaReintegro.fechaUltimoDiaLaboral}}</th>
+                            <td>{{consultaReintegro.fechaReingreso}}</td>
+                            <td>{{consultaReintegro.causaSalida}}</td>
+                            <td>{{consultaReintegro.motivoConsulta</td>
+                            <td>{{consultaReintegro.enfermedadActual}}</td>
+                            <td>{{consultaReintegro.diagnosticoCie</td>
+                            <td>{{consultaReintegro.tratamiento}}</td>
+                            <td>{{consultaReintegro.paciente.nombre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container" id="div1">
+                    <button id="create" type="button" class="btn btn-primary btn-sm" (click)="downloadPDFconsultaReintegro()">GENERAR
+                        PDF</button>
+                </div>
+            </div>
+
+            <hr />
+
+            <mat-grid-list cols="3" rowHeight="3:0.5" class="mat-elevation-z4">
+                <h2>REPORTE DE ACCIDENTES POR FECHA</h2>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaInicio">Fecha Inicio:</label>
+                        <input [(ngModel)]="fechaInicio" id="fechaInicio" name="fechaInicio" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <label for="fechaFin">Fecha Fin:</label>
+                        <input [(ngModel)]="fechaFin" id="fechaFin" name="fechaFin" type="text">
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="form-group">
+                        <div class="container" id="div1">
+                            <button id="create" type="button" class="btn btn-primary btn-sm"
+                                (click)="reporteAccidentePorFecha()">Accidentes</button>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+
+
+            <div id="pdfTable" #pdfTable>
+                <table class="table table-bordered display">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>codigo</th>
+                            <th>Fecha Accidente</th>
+                            <th>Naturaleza Lesion</th>
+                            <th>Region Afectada</th>
+                            <th>Parte Afectada</th>
+                            <th>TipoAccidente</th>
+                            <th>Escala</th>
+                            <th>Enviado A</th>
+                            <th>Tipo Accidente</th>
+                            <th>Paciente</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let accidente of accidentes">
+                            <th>{{accidente.codigo}}</th>
+                            <td>{{dateFormat(accidente.fechaAccidente)}}</td>
+                            <td>{{accidente.naturalezaLesion}}</td>
+                            <td>{{accidente.regionAfectada}}</td>
+                            <td>{{accidente.parteAfectada}}</td>
+                            <td>{{accidente.tipoAccidente}}</td>
+                            <td>{{accidente.escala}}</td>
+                            <td>{{accidente.enviadoA}}</td>
+                            <td>{{accidente.tipoAccidente}}</td>
+                            <td>{{accidente.paciente.nombre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container" id="div1">
+                    <button id="create" type="button" class="btn btn-primary btn-sm" (click)="downloadPDF()">GENERAR
+                        PDF</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

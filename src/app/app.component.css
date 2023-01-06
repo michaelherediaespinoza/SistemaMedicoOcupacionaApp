@@ -1,0 +1,14 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+#boton{display:none;}
+
+label {
+  font-weight: bold;
+}
+
+
+
+
+

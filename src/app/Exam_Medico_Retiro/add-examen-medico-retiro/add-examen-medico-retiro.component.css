@@ -1,0 +1,162 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+input {
+  text-align: center;
+}
+
+.espacio {
+  margin-top: 1%;
+  margin-bottom: 2;
+}
+
+.estiloLetra {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  
+}
+
+.estiloTitulos {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  
+}
+
+.colosito {
+  background-color: #6A1B9A;
+}
+.marcoborde{
+  background-color: #e9e9e9;
+}
+
+
+
+/* Styles for tab labels */
+.mat-tab-label {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: red;
+  font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: red;
+  font-weight: 700;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+  background-color: green;
+}
+
+p {
+font-family: Lato;
+}
+
+
+
+
+.accesibility-mat.tap {
+  font-weight: bold;
+}
+
+
+.text-inside-grid {
+  position: absolute;
+  left: 5px;
+}
+
+
+.my-module {
+position: fixed;
+top: 0;
+left: 0;
+}
+
+
+.demo-table {
+width: 100%;
+}
+
+.mat-row .mat-cell {
+border-bottom: 1px solid transparent;
+border-top: 1px solid transparent;
+cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+font-weight: bold;
+}
+
+
+.info-dialog-diagnostico-sindrome {
+  text-align: center;
+  margin-top: 3%;
+}
+
+
+.hidden{
+  visibility:hidden;
+}
+
+.txtArea {
+  margin-top: 10%;
+  margin-bottom: 5%;
+  margin-left: 20px;
+}
+
+
+.white-icon {
+  color: white;
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.white-icon svg {
+  fill: white;
+}
+
+
+.minuscula {
+  text-transform: lowercase
+}
+.mayuscula {
+  text-transform: uppercase
+}
+
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+tr.td {
+vertical-align: middle !important;
+}
+
+span {
+    padding: 1rem 1rem;
+}
+
+.addscroll {
+  position: absolute;
+  overflow: scroll;
+  overflow: visible;
+}

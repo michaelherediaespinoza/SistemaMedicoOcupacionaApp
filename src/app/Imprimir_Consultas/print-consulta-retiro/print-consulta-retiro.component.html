@@ -1,0 +1,735 @@
+<div class="dashboard-card-content">
+    <div id="pdfTable" #pdfTable class="card border-info" style="width: 100%;">
+
+        <div class="card-header alert alert-info clearfix" role="banner" aria-label="Información del paciente"
+            style="border: solid 1px;">
+
+            <button class="btn btn-warning float-center" mat-button mat-raised-button color="primary"
+                printTitle="CONSULTA RETIRO" printSectionId="print-section" [useExistingCss]="true" ngxPrint>
+                <i class="bi bi-printer" style='color: rgb(255, 255, 255)'>IMPRIMIR CONSULTA RETIRO</i></button>
+            <button class="btn btn-danger float-left" (click)="btnCancelar()">
+                VOLVER ATRÁS
+            </button>
+        </div>
+
+
+        <div id="print-section" class="card-body" border-danger role="form" aria-label="CONSULTA RETIRO">
+            <form>
+
+                <div tabindex="0" style="text-align: left;" class="p-2 mt-3 colosito text-white estiloLetra">A. DATOS
+                    DEL PACIENTE
+                </div>
+
+                <mat-grid-list cols="6" rowHeight="3:1.5">
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="empresa">Empresa:</label>
+                            <input style="width: 60%;" id="empresa" type="text" name="empresa" value={{empresita}}
+                                type="text" class="form-control border border-dark" readonly>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="pacientecm">Paciente:</label>
+                            <input size="80" name="pacientecm" id="pacientecm" value={{ceduNombApellPaciente}}
+                                type="text" class="form-control-lg" readonly>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="cargoPaciente">Cargo Paciente:</label>
+                            <input id="cargoPaciente" name="cargoPaciente" value={{cargito}} type="text"
+                                class="form-control border border-dark" readonly>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="fechaIngresoLabores">Fecha Inicio Labores:</label>
+                            <input style="width: 60%;" [(ngModel)]="examenMedicoRetiro.fechaIngresoLabores"
+                                name="fechaIngresoLabores" id="fechaIngresoLabores" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="fechaSalida">&nbsp;&nbsp;&nbsp;Fecha de Salida:&nbsp;&nbsp;&nbsp;</label>
+                            <input style="width: 60%;" [(ngModel)]="examenMedicoRetiro.fechaSalida" name="fechaSalida"
+                                id="fechaSalida" type="text" class="form-control-lg">
+
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="tiempoRetiroMeses">Tiempo:</label>
+                            <input style="width: 50%;" [(ngModel)]="examenMedicoRetiro.tiempoRetiroMeses"
+                                name="tiempoRetiroMeses" id="tiempoRetiroMeses" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+
+                <div id="factoresRPTA" style="text-align: left;" class="p-2 mt-3 colosito text-white estiloLetra">
+                    B. FACTORES DE RIESGO
+                </div>
+
+                <mat-grid-list cols="3" rowHeight="2:0.8" tabindex="0" role="form" aria-labelledby="factoresRPTA"
+                    class="mat-elevation-z3 border border-secondary">
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="puestoTrabajoArea">PUESTO DE TRABAJO:</label>
+                            <textarea id="puestoTrabajoArea" class="border border-dark txtArea"
+                                [(ngModel)]="examenMedicoRetiro.puestoTrabajoRetiro" name="puestoTrabajoArea" rows="2"
+                                cols="20" placeholder="Descripción.."
+                                class="form-control border border-dark"></textarea>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="actividadpt">ACTIVIDADES:</label>
+                            <textarea id="actividadpt" class="border border-dark txtArea"
+                                [(ngModel)]="examenMedicoRetiro.actividadRetiro" name="actividadpt" rows="2" cols="30"
+                                placeholder="Descripción.." class="form-control border border-dark"></textarea>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="fisico"> FÍSICO: </label>
+                            <textarea id="fisico" class="border border-dark txtArea"
+                                [(ngModel)]="examenMedicoRetiro.riesgoRetiro" name="fisico" rows="2" cols="30"
+                                class="form-control border border-dark"></textarea>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <div class="p-2 mt-3 estiloTitulos border border-secondary"> ANTECEDENTES PERSONALES
+
+                    <div id="atecedenteFamiliar" style="text-align: left;"
+                        class="p-2 mt-3 colosito text-white estiloLetra">J.
+                        ANTECEDENTES CLÍNICOS Y QUIRÚRGICOS
+                    </div>
+
+                    <mat-grid-list cols="7" rowHeight="2.5:1.5" tabindex="0" role="form"
+                        aria-labelledby="atecedenteFamiliar" class="mat-elevation-z3 border border-secondary">
+                        <mat-grid-tile style="margin-bottom: 5%;" [colspan]="7" [rowspan]="1">
+                            <div class="form-group">
+                                <label id="antecedenteFamiliardescrip">DESCRIPCIÓN:</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="antecedentePersonal" class="border border-dark txtArea"
+                                    aria-labelledby="atecedenteFamiliar antecedenteFamiliardescrip"
+                                    [(ngModel)]="historial.antecedentePersonal" name="antecedentePersonal" rows="3"
+                                    cols="100" placeholder="Descripción.."></textarea>
+                            </div>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+
+                    <div id="antecedentesTD" style="text-align: left;" class="p-2 mt-3 colosito text-white estiloLetra">
+                        H.
+                        ANTECEDENTES
+                        DE TRABAJO (DESCRIPCIÓN)
+                    </div>
+
+                    <mat-grid-list cols="4" rowHeight="3:1" tabindex="0" role="form" aria-labelledby="antecedentesTD"
+                        class="mat-elevation-z3 border border-secondary">
+                        <mat-grid-tile>
+                            <div tabindex="0" class="form-group">
+                                <h5> FUE CALIFICADO POR EL INSTITUTO DE SEGURIDAD SOCIAL CORRESPONDIENTE:</h5>
+                            </div>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <div class="form-group">
+                                <p class="hidden">.</p>
+                                <mat-form-field>
+                                    <mat-label>ACCIDENTE DE TRABAJO></mat-label>
+                                    <mat-select [(value)]="historial.accidenteTrabajoCalificadoPorIess">
+                                        <mat-option>NINGUNO</mat-option>
+                                        <mat-option value="SI">SI</mat-option>
+                                        <mat-option value="NO">NO</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <div class="form-group">
+                                <label for="accidenteEspecificar">ESPECIFICAR:</label>
+                                <input [(ngModel)]="historial.accidenteEspecificar" name="accidenteEspecificar"
+                                    id="accidenteEspecificar" type="text" class="form-control-lg">
+                            </div>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <div class="form-group">
+                                <label for="accidenteTrabajoFechaCalificado">FECHA:</label>
+                                <input [(ngModel)]="historial.accidenteTrabajoFechaCalificado"
+                                    name="accidenteTrabajoFechaCalificado" placeholder="D-M-A"
+                                    id="accidenteTrabajoFechaCalificado" type="text" class="form-control-lg">
+                            </div>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="4" [rowspan]="1">
+                            <div class="form-group">
+                                <label for="observacionesAccidente">OBSERVACIONES:</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="observacionesAccidente" class="border border-dark txtArea"
+                                    [(ngModel)]="historial.observacionesAccidente" name="observacionesAccidente"
+                                    rows="3" cols="90" placeholder="Descripción.."></textarea>
+                            </div>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+
+
+                    <div id="EnfermedadProf" style="text-align: left;" class="p-2 mt-3 colosito text-white estiloLetra">
+                        I. ENFERMEDADES PROFESIONALES
+                    </div>
+
+                    <mat-grid-list cols="4" rowHeight="3:1" tabindex="0" role="form" aria-labelledby="EnfermedadProf"
+                        class="mat-elevation-z3 border border-primary">
+                        <mat-grid-tile>
+                            <div tabindex="0" class="form-group">
+                                <h5> FUE CALIFICADO POR EL INSTITUTO DE SEGURIDAD SOCIAL CORRESPONDIENTE:</h5>
+                            </div>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <div class="form-group">
+                                <p class="hidden">.</p>
+                                <mat-form-field>
+                                    <mat-label>ENFERMEDADES PROFECIONALES></mat-label>
+                                    <mat-select [(value)]="historial.enfermedadProfesionalCalificadoPorIess">
+                                        <mat-option>NINGUNO</mat-option>
+                                        <mat-option value="SI">SI</mat-option>
+                                        <mat-option value="NO">NO</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <div class="form-group">
+                                <label for="enfermedadEspecificar">ESPECIFICAR:</label>
+                                <input [(ngModel)]="historial.enfermedadEspecificar" name="enfermedadEspecificar"
+                                    id="enfermedadEspecificar" type="text" class="form-control-lg">
+                            </div>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <div class="form-group">
+                                <label for="enferemedadProfesionalFechaCalificado">FECHA:</label>
+                                <input [(ngModel)]="historial.enferemedadProfesionalFechaCalificado"
+                                    name="enferemedadProfesionalFechaCalificado" placeholder="D-M-A"
+                                    id="enferemedadProfesionalFechaCalificado" type="text" class="form-control-lg">
+                            </div>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="4" [rowspan]="1">
+                            <div class="form-group">
+                                <label for="enfermedadProfesionalObservaciones">OBSERVACIONES:</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="enfermedadProfesionalObservaciones" class="border border-dark txtArea"
+                                    [(ngModel)]="historial.enfermedadProfesionalObservaciones"
+                                    name="enfermedadProfesionalObservaciones" rows="3" cols="90"
+                                    placeholder="Descripción.."></textarea>
+                            </div>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+
+                <div id="constantesVA" style="text-align: left;" class="p-2 mt-3 colosito text-white estiloLetra">
+                    N. CONSTANTES
+                    VITALES Y ANTROPOMETRÍA</div>
+
+                <mat-grid-list cols="5" rowHeight="3:1.2" tabindex="0" role="form" aria-labelledby="constantesVA"
+                    class="mat-elevation-z3 border border-primary">
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="estadoNutpresionArterialricionalcp">PRESIÓN ARTERIAL:</label>
+                            <input style="width: 40%;" [(ngModel)]="examenMedicoRetiro.presionArterial"
+                                name="presionArterial" id="estadoNutpresionArterialricionalcp" type="text"
+                                class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="temperatura">&nbsp;&nbsp;&nbsp;&nbsp;
+                                TEMPERATURA:&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                            <input style="width: 40%;" [(ngModel)]="examenMedicoRetiro.temperatura" name="temperatura"
+                                id="temperatura" type="number" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="pulso">FRECUENCIA CARDIACA:</label>
+                            <input style="width: 40%;" [(ngModel)]="examenMedicoRetiro.pulso" name="pulso" id="pulso"
+                                type="number" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="saturacionOxigeno">SATURACIÓN OXÍGENO:</label>
+                            <input style="width: 40%;" [(ngModel)]="examenMedicoRetiro.saturacionDeOxigeno"
+                                name="saturacionOxigeno" id="saturacionOxigeno" type="number" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="respiracion">FRECUENCIA RESPIRATORIA:</label>
+                            <input style="width: 40%;" [(ngModel)]="examenMedicoRetiro.respiracion" name="respiracion"
+                                id="respiracion" type="number" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="peso">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PESO (
+                                kg ) :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <input style="width: 40%;" [(ngModel)]="examenMedicoRetiro.peso" name="peso" id="peso"
+                                type="number" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="talla">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TALLA
+                                ( cm ) :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <input style="width: 40%;" [(ngModel)]="examenMedicoRetiro.talla" name="talla" id="talla"
+                                type="number" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class=" form-group">
+                            <label for="masaCorporal">&nbsp;&nbsp;&nbsp;MASA
+                                CORPORAL:&nbsp;&nbsp;&nbsp;</label>
+                            <input style="width: 40%;" [(ngModel)]="examenMedicoRetiro.masaCorporal" name="masaCorporal"
+                                id="masaCorporal" type="number" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="estadoNutricional">ESTADO NUTRICIONAL:</label>
+                            <input style="width: 60%;" [(ngModel)]="examenMedicoRetiro.estadoNutricional"
+                                name="estadoNutricional" id="estadoNutricional" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <div id="examenFR" style="text-align: left;" class="p-2 mt-3 colosito text-white estiloLetra">
+                    O. EXAMEN
+                    FÍSICO
+                    REGIONAL</div>
+
+                <mat-grid-list cols="8" rowHeight="3:1.5" tabindex="0" role="form" aria-labelledby="examenFR"
+                    class="mat-elevation-z3 border border-secondary">
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="cicatrices">Cicatrices:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.cicatrices" name="cicatrices"
+                                id="cicatrices" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="tatuajes">Tatuajes:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.tatuajes" name="tatuajes" id="tatuajes"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="oido">Oido:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.oido" name="oido" id="oido" type="text"
+                                class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="piel">Piel:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.piel" name="piel" id="piel" type="text"
+                                class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="parpados">Párpados:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.parpados" name="parpados" id="parpados"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="conjuntivas">Conjuntivas:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.conjuntivas" name="conjuntivas"
+                                id="conjuntivas" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="pupilas">Pupilas:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.pupilas" name="pupilas" id="pupilas"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="visceras">Visceras:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.visceras" name="visceras" id="visceras"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="cornea">Córnea:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.cornea" name="cornea" id="cornea"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="motilidad">Motilidad:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.motilidad" name="motilidad"
+                                id="motilidad" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="auditivoExterno">Auditivo:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.auditivoExterno" name="auditivoExterno"
+                                id="auditivoExterno" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="labios">Labios:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.labios" name="labios" id="labios"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="timpanos">Tímpanos:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.timpanos" name="timpanos" id="timpanos"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="pabellon">Pabellón:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.pabellon" name="pabellon" id="pabellon"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="lengua">Lengua:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.lengua" name="lengua" id="lengua"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="faringe">Faringe:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.faringe" name="faringe" id="faringe"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="amigdalas">Amígdalas:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.amigdalas" name="amigdalas"
+                                id="amigdalas" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="dentadura">Dentadura:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.dentadura" name="dentadura"
+                                id="dentadura" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="tabique">Tabique:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.tabique" name="tabique" id="tabique"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="cornetes">Cornetes:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.cornetes" name="cornetes" id="cornetes"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="mucosas">Mucosas:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.mucosas" name="mucosas" id="mucosas"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="tiroides">Tiroides:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.tiroides" name="tiroides" id="tiroides"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="movilidad">Movilidad:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.movilidad" name="movilidad"
+                                id="movilidad" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="mamas">Mamas:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.mamas" name="mamas" id="mamas"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="corazon">Corazón:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.corazon" name="corazon" id="corazon"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="pulmones">Pulmones:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.pulmones" name="pulmones" id="pulmones"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="flexibilidad">Flexibilidad:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.flexibilidad" name="flexibilidad"
+                                id="flexibilidad" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="desviacion">Desviación:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.desviacion" name="desviacion"
+                                id="desviacion" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="dolor">Dolor:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.dolor" name="dolor" id="dolor"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="pelvis">Pelvis:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.pelvis" name="pelvis" id="pelvis"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="genitales">Genitales:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.genitales" name="genitales"
+                                id="genitales" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="vascular">Vascular:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.vascular" name="vascular" id="vascular"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="fuerza">Fuerza:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.fuerza" name="fuerza" id="fuerza"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="sensibilidad">Sensibilidad:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.sensibilidad" name="sensibilidad"
+                                id="sensibilidad" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="marcha">Marcha:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.marcha" name="marcha" id="marcha"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="mb-1">
+                            <label for="reflejos">Reflejos:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenFisico.reflejos" name="reflejos" id="reflejos"
+                                type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="3" [rowspan]="1">
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="8" [rowspan]="1">
+                        <div class="form-group">
+                            <label for="observacionexamfisico">DESCRIPCIÓN:</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="observacionexamfisico" class="border border-dark txtArea"
+                                [(ngModel)]="examenFisico.observaciones" name="observacionexamfisico" rows="3" cols="60"
+                                placeholder="Descripción.."></textarea>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+
+                <div id="resultadoExamenesGE" style="text-align: left;"
+                    class="p-2 mt-3 colosito text-white estiloLetra">
+                    P. RESULTADOS
+                    DE EXAMENES GENERALES Y ESPECIFICOS</div>
+
+                <mat-grid-list cols="3" rowHeight="3:1" tabindex="0" role="form" aria-labelledby="resultadoExamenesGE"
+                    class="mat-elevation-z3 border border-primary">
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="nombreExamen">Examen:</label>
+                            <input [(ngModel)]="examenGeneral.nombreExamen" name="nombreExamen" id="nombreExamen"
+                                type="text" class="form-control border border-dark">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="fechaeg">Fecha:</label>
+                            <input [(ngModel)]="examenGeneral.fecha" name="fechaeg" id="fechaeg" type="text"
+                                class="form-control border border-dark">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="resultadoeg">Resultado Examenes:</label>
+                            <textarea id="resultadoeg" class="txtArea" [(ngModel)]="examenGeneral.resultado"
+                                name="resultadoeg" rows="2" cols="50" placeholder="Descripción.."
+                                class="form-control border border-dark"></textarea>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="3" [rowspan]="2">
+                        <div tabindex="0" role="table" aria-rowcount="2" aria-label="Lista de Examenes AGREGADOS"
+                            class="container">
+                            <div id="table" class="overflow-auto">
+                                <table role="table"
+                                    class="table table-hover table-bordered table-responsive-md table-striped text-center">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th class="text-center">EXAMEN</th>
+                                            <th class="text-center">FECHA</th>
+                                            <th class="text-center">RESULTADO DE EXAMEN</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let examenGeneral of examenGeneralAdd" class="text-center">
+                                            <td>{{examenGeneral.nombreExamen}}</td>
+                                            <td>{{examenGeneral.fecha}}</td>
+                                            <td>{{examenGeneral.resultado}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <div id="diagnosticoPQ" style="text-align: left;" class="p-2 mt-3 colosito text-white estiloLetra">
+                    Q. DIAGNÓSTICO
+                </div>
+
+                <mat-grid-list cols="4" rowHeight="3:1.2" tabindex="0" role="form" aria-labelledby="diagnosticoPQ"
+                    class="mat-elevation-z3 border border-secondary">
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="nombrediag">Nombre:</label>
+                            <input style="width: 70%;" [(ngModel)]="diagnostico.nombre" name="nombrediag"
+                                id="nombrediag" type="text" class="form-control-lg"
+                                ngbTooltip="ENTER Buscar Diagnostico" placement="top">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="codigodiag">CIE 10:</label>
+                            <input style="width: 40%;" [(ngModel)]="diagnostico.codigo" name="codigodiag"
+                                id="codigodiag" type="text" class="form-control-lg"
+                                ngbTooltip="ENTER Buscar Diagnostico" placement="top">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="prediag">PRE:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenMedicoRetiro.presuntivo" name="prediag"
+                                id="prediag" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <div class="form-group">
+                            <label for="defdiag">DEF:</label>
+                            <input style="width: 30%;" [(ngModel)]="examenMedicoRetiro.definitivo" name="defdiag"
+                                id="defdiag" type="text" class="form-control-lg">
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="4" [rowspan]="1">
+                        <div class="form-group">
+                            <label for="datosdiag">DATOS DIAGNÓSTICO:</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea style="text-align: center;" id="datosdiag" class="border border-dark txtArea"
+                                [(ngModel)]="examenMedicoRetiro.diagnosticoCie" name="datosdiag" rows="3" cols="80"
+                                placeholder="Descripción.."></textarea>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <div id="aptitudMedicaPT" style="text-align: left;" class="p-2 mt-3 colosito text-white estiloLetra">
+                    R. EVALUACIÓN MÉDICA DE RETIRO</div>
+
+                <mat-grid-list cols="6" rowHeight="3:1.5" tabindex="0" role="form" aria-labelledby="diagnosticoPQ"
+                    class="mat-elevation-z3 border border-secondary">
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <div class="form-group">
+                            <p class="hidden">.</p>
+                            <mat-form-field>
+                                <mat-label>EVALUACIÓN</mat-label>
+                                <mat-select [(value)]="examenMedicoRetiro.evaluacionMedicaRetiro">
+                                    <mat-option>NINGUNO</mat-option>
+                                    <mat-option value="SI">SI</mat-option>
+                                    <mat-option value="NO">NO</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile style="margin-bottom: 5%;" [colspan]="4" [rowspan]="1">
+                        <div class="form-group">
+                            <label id="observacionesRetiro">DESCRIPCIÓN:</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="observacionesRetiro" class="border border-dark txtArea"
+                                [(ngModel)]="examenMedicoRetiro.observacionesRetiro" name="observacionesRetiro" rows="3"
+                                cols="60" placeholder="Descripción.."></textarea>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <div id="recomenTratamien" style="text-align: left;" class="p-2 mt-3 colosito text-white estiloLetra">
+                    S. RECOMENDACIONES O TRATAMIENTO</div>
+
+                <mat-grid-list cols="4" rowHeight="2:0.5" tabindex="0" role="form" aria-labelledby="recomenTratamien"
+                    class="mat-elevation-z3 border border-secondary">
+                    <mat-grid-tile [colspan]="4" [rowspan]="1">
+                        <div class="form-group">
+                            <label for="tratamiento">TRATAMIENTO:</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="tratamiento" class="border border-dark txtArea"
+                                [(ngModel)]="examenMedicoRetiro.tratamiento" name="tratamiento" rows="3" cols="60"
+                                placeholder="Descripción.."></textarea>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </form>
+        </div>
+    </div>
+</div>

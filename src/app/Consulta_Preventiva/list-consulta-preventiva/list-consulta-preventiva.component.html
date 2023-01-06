@@ -1,0 +1,134 @@
+<div class="dashboard-card-content">
+    <div class="card border-info" style="border: solid 1px;">
+        <div class="card-header mat-elevation-z8">
+            <div>
+                <h2 style="margin-top: 1%;float: left;"> Paciente:<input size="50" class="colorLetra" name="nombre"
+                        value={{ceduNombApellPaciente}} type="text">
+                </h2>
+                <ul>
+                    <h2 style="margin-top: 1%;float: right;" class="estiloLetra">
+                        <li>
+                            <u>LISTA DE CONSULTAS PERIÓDICAS</u>
+                        </li>
+                    </h2>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <!--
+            <div style="text-align: right">
+                <button style="float: right;" type="button" class="btn btn-primary btn-sm"
+                    (click)="addNewConsultaPreventiva()">Add Consulta</button>
+            </div>
+            <div style="text-align: right">
+                <button style="float: right;" type="button" class="btn btn-primary btn-sm"
+                    (click)="imprimirAllConsultasPreventivasPorPaciente()">Imprimir Consultas</button>
+            </div>
+            -->
+
+            <button class="btn btn-danger float-left" (click)="btnCancelar()">
+                VOLVER ATRÁS
+            </button>
+            <div style="text-align: right">
+                <button style="float: right;" type="button" class="btn-sm" mat-button mat-raised-button color="primary"
+                    (click)="addNewConsultaPreventiva()">NUEVA CONSULTA PERIODICA</button>
+            </div>
+
+            <mat-form-field class="mat-elevation-z3">
+                <mat-label>Buscar</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
+            </mat-form-field>
+
+            <table mat-table [dataSource]="dataSourceConsultaPreventiva" matSort
+                class="example-containertable table-bordered mat-elevation-z8">
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> CODIGO </th>
+                    <td mat-cell *matCellDef="let consultaPreventiva"> {{consultaPreventiva.codigo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef> FECHA </th>
+                    <td mat-cell *matCellDef="let consultaPreventiva"> {{dateFormat(consultaPreventiva.fecha)}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="peso">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> PESO </th>
+                    <td mat-cell *matCellDef="let consultaPreventiva"> {{consultaPreventiva.peso}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="talla">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> TALLA </th>
+                    <td mat-cell *matCellDef="let consultaPreventiva"> {{consultaPreventiva.talla}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="masaCorporal">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> MASA CORPORAL </th>
+                    <td mat-cell *matCellDef="let consultaPreventiva">
+                        {{consultaPreventiva.masaCorporal}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="estadoNutricional">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO NUTRICIONAL </th>
+                    <td mat-cell *matCellDef="let consultaPreventiva">
+                        {{consultaPreventiva.estadoNutricional}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="enfermedadActual">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ENFERMEDAD ACTUAL </th>
+                    <td mat-cell *matCellDef="let consultaPreventiva">
+                        {{consultaPreventiva.enfermedadActual}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tratamiento">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> TRATAMIENTO </th>
+                    <td mat-cell *matCellDef="let consultaPreventiva">
+                        {{consultaPreventiva.tratamiento}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones1">
+                    <th mat-header-cell *matHeaderCellDef> CERTIFICADO </th>
+                    <td mat-cell *matCellDef="let consultaPreventiva">
+                        <a class="pointer" (click)="redirectCertificadoAptitud(consultaPreventiva)"
+                            style="color: #00a2ff" matTooltip="CERTIFICADO APTITUD">
+                            <button mat-button mat-raised-button>
+                                <i class="bi bi-menu-down" style='color: blue'>Certificado Aptitud</i>
+                            </button>
+                        </a>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones2">
+                    <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
+                    <td mat-cell *matCellDef="let consultaPreventiva">
+                        <a class="pointer" (click)="editarConsultaPreventiva(consultaPreventiva)"
+                            matTooltip="Editar Consulta Preventiva">
+                            <button mat-raised-button focusable="false">
+                                <i class="bi bi-pencil-square" style='color: blue'>Visualizar</i>
+                            </button>
+                        </a>
+                        <a class="pointer" (click)="deleteConsultaPreventiva(consultaPreventiva)"
+                            matTooltip="Eliminar Consulta PERIODICA">
+                            <button mat-raised-button focusable="false">
+                                <i class="bi bi-trash3-fill" style='color: blue'>Eliminar</i>
+                            </button>
+                        </a>
+                        <a class="pointer" (click)="redirectImprimirConsulta(consultaPreventiva)"
+                            matTooltip="Imprimir Consulta">
+                            <button mat-raised-button focusable="false">
+                                <i class="bi bi-printer-fill" style='color: blue'>Imprimir Consulta</i>
+                            </button>
+                        </a>
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsConsultaPreventiva"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsConsultaPreventiva;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[10, 20, 35, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </div>
+</div>

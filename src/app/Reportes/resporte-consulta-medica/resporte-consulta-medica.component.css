@@ -1,0 +1,11 @@
+.estiloLetra {
+    font-weight: bold;
+    font-style: italic;
+}
+
+hr {
+    margin-top: 12rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border-top: 10px solid rgba(0, 0, 0, 0.1);
+  }

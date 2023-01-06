@@ -1,0 +1,142 @@
+<div class="dashboard-card-content">
+    <div id="listconsultafocus" #listconsultafocus tabindex="-1" aria-labelledby="listConsulmedGene" class="card"
+        style="border: solid 1px;">
+        <div class="card-header mat-elevation-z8">
+            <div>
+                <h2 style="margin-top: 1%;float: left;"><label for="pacientecm">Paciente:</label><input size="50"
+                        id="pacientecm" class="colorLetra" name="nombre" value={{ceduNombApellPaciente}} type="text">
+                </h2>
+                <ul>
+                    <h2 style="margin-top: 1%;float: right;" class="estiloLetra">
+                        <li>
+                            <u id="listConsulmedGene">LISTA DE CONSULTA MÉDICA GENERAL</u>
+                        </li>
+                    </h2>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <button class="btn btn-danger float-left" (click)="btnCancelar()">
+                VOLVER ATRÁS
+            </button>
+            <div style="text-align: right">
+                <button style="float: right;" type="button" class="btn-sm" mat-button mat-raised-button color="primary"
+                    (click)="addNewConsultaMedica()">NUEVA CONSULTA GENERAL</button>
+            </div>
+
+            <mat-form-field class="mat-elevation-z3">
+                <mat-label>Buscar</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input autocomplete="off">
+            </mat-form-field>
+
+            <table mat-table [dataSource]="dataSourceConsulta" tabindex="0" role="table" matSort
+                class="table table-bordered mat-elevation-z8">
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> CODIGO </th>
+                    <td mat-cell *matCellDef="let consultaMedica"> {{consultaMedica.codigo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef> FECHA </th>
+                    <td mat-cell *matCellDef="let consultaMedica"> {{dateFormat(consultaMedica.fecha)}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="peso">
+                    <th mat-header-cell *matHeaderCellDef>PESO</th>
+                    <td mat-cell *matCellDef="let consultaMedica"> {{consultaMedica.peso}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="talla">
+                    <th mat-header-cell *matHeaderCellDef> TALLA </th>
+                    <td mat-cell *matCellDef="let consultaMedica"> {{consultaMedica.talla}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="masaCorporal">
+                    <th mat-header-cell *matHeaderCellDef> MASA CORPORAL </th>
+                    <td mat-cell *matCellDef="let consultaMedica"> {{consultaMedica.masaCorporal}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="estadoNutricional">
+                    <th mat-header-cell *matHeaderCellDef> ESTADO NUTRICIONAL </th>
+                    <td mat-cell *matCellDef="let consultaMedica"> {{consultaMedica.estadoNutricional}} </td>
+                </ng-container>1
+
+                <ng-container matColumnDef="temperatura">
+                    <th mat-header-cell *matHeaderCellDef> TEMPERATURA </th>
+                    <td mat-cell *matCellDef="let consultaMedica"> {{consultaMedica.temperatura}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="motivoConsulta">
+                    <th mat-header-cell *matHeaderCellDef> MOTIVO CONSULTA </th>
+                    <td mat-cell *matCellDef="let consultaMedica"> {{consultaMedica.motivoConsulta}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="enfermedadActual">
+                    <th mat-header-cell *matHeaderCellDef> PROBLEMA ACTUAL </th>
+                    <td mat-cell *matCellDef="let consultaMedica"> {{consultaMedica.enfermedadActual}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
+                    <td mat-cell *matCellDef="let consultaMedica">
+                        <a class="pointer" (click)="editarConsulta(consultaMedica)">
+                            <button mat-raised-button focusable="false">
+                                <i class="bi bi-pencil-square" style='color: blue'>Editar</i>
+                            </button>
+                        </a>
+                        <a class="pointer" (click)="deleteConsulta(consultaMedica)">
+                            <button mat-raised-button focusable="false">
+                                <i class="bi bi-trash3-fill" style='color: blue'>Eliminar</i>
+                            </button>
+                        </a>
+                        <a class="pointer" (click)="inprimirCertificadoReposo(consultaMedica)">
+                            <button mat-raised-button focusable="false">
+                                <i class="bi bi-printer-fill" style='color: blue'>Certificado Reposo</i>
+                            </button>
+                        </a>
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsConsulta"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsConsulta;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[10, 20, 35, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </div>
+
+
+    <ng-template #myModalDatosCertificado let-c="close" let-d="dismiss">
+
+        <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button>
+
+        <h3 style="text-align: center;" mat-dialog-title>IMPRIMIR CERTIFICADO</h3>
+
+        <div mat-dialog-content>
+            <p>DESCRIPCIÒN</p>
+            <mat-form-field appearance="fill">
+                <mat-label>Ingrese Descripción</mat-label>
+                <textarea id="motivoconsulta" class="border border-dark txtArea" value={{descripcionCertificadoReposo}}
+                    name="motivoconsulta" rows="3" cols="50" placeholder="Descripción.."
+                    class="form-control border border-dark"></textarea>
+            </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button>No Thanks</button>
+            <button mat-button cdkFocusInitial>Ok</button>
+        </div>
+
+        <div mat-dialog-actions align="end">
+            <button mat-button mat-raised-button color="warn" mat-dialog-close>OK</button>
+        </div>
+
+    </ng-template>
+
+
+</div>

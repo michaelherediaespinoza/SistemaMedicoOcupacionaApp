@@ -1,0 +1,110 @@
+<div class="dashboard-card-content">
+    <div tabindex="-1" id="componentListPacientesConsulMedica" #componentListPacientesConsulMedica
+        aria-labelledby="lpcmg" class="card">
+        <div class="card-header">
+            <h2 id="lpcmg" class="estiloLetra">LISTA DE PACIENTES PARA CONSULTA MÉDICA GENERAL</h2>
+        </div>
+
+        <div class="card-body">
+
+            <mat-form-field class="mat-elevation-z3">
+                <mat-label>Buscar</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo Juan o por cédula" #input
+                    autocomplete="off">
+            </mat-form-field>
+
+            <table tabindex="0" mat-table [dataSource]="dataSource" matSort
+                class="table table-bordered mat-elevation-z8">
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> CODIGO </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.codigo}} </td>
+                </ng-container>
+                <ng-container matColumnDef="cedula">
+                    <th mat-header-cell *matHeaderCellDef> CÉDULA </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.cedula}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef> NOMBRE </th>
+                    <td mat-cell *matCellDef="let paciente" id="namepaciente"> {{paciente.nombre}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="apellido">
+                    <th mat-header-cell *matHeaderCellDef> APELLIDO </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.apellido}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="edad">
+                    <th mat-header-cell *matHeaderCellDef> EDAD </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.edad}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="sexo">
+                    <th mat-header-cell *matHeaderCellDef> SEXO </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.sexo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tipoSangre">
+                    <th mat-header-cell *matHeaderCellDef> TIPO SANGRE </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.tipoSangre}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="telefono">
+                    <th mat-header-cell *matHeaderCellDef> TELÉFONO </th>
+                    <td mat-cell *matCellDef="let paciente"> {{paciente.telefono}} </td>
+                </ng-container>
+
+                <!--
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> EXAMEN INICIAL </th>
+                    <td mat-cell *matCellDef="let paciente">
+                        <a class="pointer" (click)="getCodigoPacienteVerEditExamenInical(paciente)"
+                            matTooltip="Agregar Examen Inicial">
+                            <button mat-button mat-raised-button>
+                                <i class="bi bi-pencil-square" style='color: blue'>Exam. Inicial</i>
+                            </button>
+                        </a>
+                    </td>
+                </ng-container>
+                -->
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> ACCIONES </th>
+                    <td mat-cell *matCellDef="let paciente">
+
+                        <a class="pointer" (click)="getCodigoPacienteParaAddConsulta(paciente)"
+                            matTooltip="Agregar Consulta">
+                            <button mat-button mat-raised-button aria-labelledby="addpaciente namepaciente">
+                                <i id="addpaciente" class="bi bi-file-earmark-plus" style='color: blue'>Agregar</i>
+                            </button>
+                        </a>
+                        <a lass="pointer" (click)="getCodigoPacienteVerConsulta(paciente)" matTooltip="Ver Consulta">
+                            <button mat-button mat-raised-button>
+                                <i class="bi bi-view-list" style='color: blue'>Consultas</i>
+                            </button>
+                        </a>
+
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">DATOS NO ENCONTRADOS PARA:  "{{input.value}}"</td>
+                </tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[10, 20, 35, 100]" aria-label="Select page of users"></mat-paginator>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // document.querySelector('[tabindex="-1" ]').focus();
+    document.getElementById("pcm").focus();
+</script>
